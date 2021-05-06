@@ -35,7 +35,7 @@ v_flag=""
 
 [[ -n $IS_VERBOSE ]] && v_flag="v"
 
-cat $FL | docker run --rm -i -v $VOLUME:/to alpine ash -c "cd /to ; tar -xp${v_flag}f - "
+cat $FL | docker run --rm -i -v $VOLUME:/to alpine ash -c "cd /to ; tar -xzp${v_flag}f - "
 err=$?
 
 [[ $err -ne 0 ]] && echo "ERROR: $err - failed to create volume '$VOLUME'" && exit $err
