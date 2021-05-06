@@ -28,7 +28,7 @@ err=$?
 
 echo "INFO: backup volume '$VOLUME' to $FL"
 
-docker run --rm -v $VOLUME:/from alpine ash -c "cd /from ; tar -cf - . " > $FL
+docker run --rm -v $VOLUME:/from alpine ash -c "cd /from ; tar -czf - . " > $FL
 err=$?
 
 [[ $err -ne 0 ]] && echo "ERROR: $err - failed to back up volume '$VOLUME'" && exit $err
