@@ -32,7 +32,7 @@ err=$?
 
 echo "INFO: copy file '$FL' to volume '$VOLUME'"
 
-cat $FL | docker run --rm -i -v $VOLUME:/to alpine ash -c "cd /to ; cp /dev/stdin $FL"
+tar -czf - $FL | docker run --rm -i -v $VOLUME:/to alpine ash -c "cd /to ; tar -xzpf -"
 #docker run --rm -v $VOLUME:/from alpine ash -c "cd /from ; tar -czf - . " > $FL
 err=$?
 
