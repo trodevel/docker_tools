@@ -2,11 +2,11 @@
 
 #<hb>***************************************************************************
 #
-# backup docker volume into archive
+# copy a file into docker volume
 #
-# USAGE: copy_to_volume.sh <volume_name> <archive_name.tar.gz>
+# USAGE: copy_to_volume.sh <file_name> <volume_name>
 #
-# Example: copy_to_volume.sh super_volume backup.tar.gz
+# Example: copy_to_volume.sh hello_world.txt super_volume
 #
 #<he>***************************************************************************
 
