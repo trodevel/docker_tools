@@ -21,7 +21,7 @@ DEST=$3
 
 [[ -z $FL ]]     && echo "ERROR: filename is not given" && show_help && exit
 [[ -z $VOLUME ]] && echo "ERROR: volume name is not given" && show_help && exit
-[[ -z $DEST ]]   && DEST="/"
+[[ -z $DEST ]]   && DEST=""
 
 [[ ! -f $FL ]]   && echo "ERROR: file '$FL' not found" && exit
 
@@ -30,11 +30,13 @@ err=$?
 
 [[ $err -ne 0 ]] && echo "ERROR: volume '$VOLUME' not found" && exit $err
 
-echo "INFO: copy file '$FL' to volume '$VOLUME'"
+[[ -n $DEST ]] && suffix=" to '$DEST'"
 
-tar -czf - $FL | docker run --rm -i -v $VOLUME:/to alpine ash -c "cd /to ; tar -xzpf -"
+echo "INFO: copy file '$FL' to volume '$VOLUME'${suffix}"
+
+tar -czf - $FL | docker run --rm -i -v $VOLUME:/to alpine ash -c "cd /to ; tar -xzpf -; [[ -n $DEST ]] && mv $FL $DEST"
 err=$?
 
 [[ $err -ne 0 ]] && echo "ERROR: $err - failed to copy file '$FL' to volume '$VOLUME'" && exit $err
 
-echo "INFO: copy file '$FL' to volume '$VOLUME' - done"
+echo "INFO: copy file '$FL' to volume '$VOLUME'${suffix} - done"
