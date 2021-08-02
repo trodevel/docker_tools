@@ -20,7 +20,7 @@ VOLUME=$2
 IS_VERBOSE=$3
 
 [[ -z $FL ]]     && echo "ERROR: filename is not given" && show_help && exit
-[[ -z $VOLUME ]] && echo "ERROR: volume name is not given" && show_help && exit
+[[ -z $VOLUME ]] && VOLUME=$( basename $FL  | sed "s/\.tar\.gz$//" )
 
 [[ ! -f $FL ]]   && echo "ERROR: file '$FL' does not exist" && show_help && exit
 
