@@ -4,7 +4,7 @@
 #
 # copy a file into docker volume
 #
-# USAGE: copy_to_volume.sh <file_name> <volume_name>
+# USAGE: copy_to_volume.sh <file_name> <volume_name> [<new_file_name>]
 #
 # Example: copy_to_volume.sh hello_world.txt super_volume
 #
