@@ -4,7 +4,7 @@
 #
 # backup docker volume into archive
 #
-# USAGE: create_volume_backup.sh <volume_name> <archive_name.tar.gz>
+# USAGE: create_volume_backup.sh <volume_name> [<archive_name.tar.gz>]
 #
 # Example: create_volume_backup.sh super_volume backup.tar.gz
 #
