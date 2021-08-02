@@ -4,9 +4,11 @@
 #
 # backup docker volume into archive
 #
-# USAGE: create_volume_backup.sh <volume_name> <archive_name.tar.gz>
+# USAGE: create_volume_backup.sh <volume_name> [<archive_name.tar.gz>]
 #
 # Example: create_volume_backup.sh super_volume backup.tar.gz
+#
+#          create_volume_backup.sh super_volume
 #
 #<he>***************************************************************************
 
@@ -19,7 +21,7 @@ VOLUME=$1
 FL=$2
 
 [[ -z $VOLUME ]] && echo "ERROR: volume name is not given" && show_help && exit
-[[ -z $FL ]]     && echo "ERROR: filename is not given" && show_help && exit
+[[ -z $FL ]]     && FL="${VOLUME}.tar.gz"
 
 docker volume inspect $VOLUME >/dev/null 2>&1
 err=$?
