@@ -34,7 +34,7 @@ err=$?
 
 echo "INFO: copy file '$FL' to volume '$VOLUME'${suffix}"
 
-tar -czf - $FL | docker run --rm -i -v $VOLUME:/to alpine ash -c "cd /to ; tar -xzpf -; [[ -n $DEST ]] && mv $FL $DEST"
+tar -czf - $FL | docker run --rm -i -v $VOLUME:/to alpine ash -c "cd /to ; tar -xzpf -; if [ -n \"$DEST\" ]; then mv $FL $DEST; fi"
 err=$?
 
 [[ $err -ne 0 ]] && echo "ERROR: $err - failed to copy file '$FL' to volume '$VOLUME'" && exit $err
