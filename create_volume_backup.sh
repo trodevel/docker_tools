@@ -19,7 +19,7 @@ VOLUME=$1
 FL=$2
 
 [[ -z $VOLUME ]] && echo "ERROR: volume name is not given" && show_help && exit
-[[ -z $FL ]]     && echo "ERROR: filename is not given" && show_help && exit
+[[ -z $FL ]]     && FL="${VOLUME}.tar.gz"
 
 docker volume inspect $VOLUME >/dev/null 2>&1
 err=$?
