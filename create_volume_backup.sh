@@ -8,6 +8,8 @@
 #
 # Example: create_volume_backup.sh super_volume backup.tar.gz
 #
+#          create_volume_backup.sh super_volume
+#
 #<he>***************************************************************************
 
 show_help()
